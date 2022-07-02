@@ -43,7 +43,7 @@ def appendToList(tr_elements):
             i += 1
     json_string = "{'word': ["
     for i in newList:
-        json_string += str(i.__dict__)#json.dumps(i.__dict__, ensure_ascii=False)
+        json_string += str(i.__dict__)
         if i != newList[-1]:
             json_string += ","
     json_string += "]}"
@@ -61,10 +61,10 @@ try:
             soupBool = False
 
     if soupBool:
-        sys.stdout = open(fileName,"w")
         tr_elements = soup.find_all("tr")
         json_string = appendToList(tr_elements).replace("'", '"')
         print(json_string)
+        sys.stdout.flush()
 
 except:
     pass
